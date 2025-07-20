@@ -1,0 +1,39 @@
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+}
+.app {
+  padding: 20px;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.menu button {
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  position: absolute;
+}
+.menu ul.hidden {
+  display: none;
+}
+.menu li {
+  padding: 10px;
+  cursor: pointer;
+}
+.menu li:hover {
+  background-color: #eee;
+}

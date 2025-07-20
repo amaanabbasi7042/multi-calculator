@@ -1,249 +1,49 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Multi Calculator App</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
-      -webkit-user-select: none;
-      user-select: none;
-    }
-    body {
-      background: linear-gradient(to right, #f2f2f2, #e0e0ff);
-      color: #333;
-    }
-    header {
-      background: #5a67d8;
-      color: white;
-      padding: 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    header h1 {
-      font-size: 20px;
-    }
-    .menu {
-      position: relative;
-    }
-    .menu-btn {
-      font-size: 24px;
-      background: none;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-    .dropdown {
-      display: none;
-      position: absolute;
-      right: 0;
-      top: 35px;
-      background: white;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      z-index: 10;
-    }
-    .dropdown a {
-      display: block;
-      padding: 10px 20px;
-      text-decoration: none;
-      color: #333;
-    }
-    .dropdown a:hover {
-      background: #f0f0f0;
-    }
-    .content {
-      padding: 20px;
-      animation: fadeIn 0.4s ease-in-out;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .ad-banner {
-      text-align: center;
-      margin: 10px auto;
-    }
-    iframe {
-      border: none;
-    }
-    input, select, button {
-      padding: 10px;
-      margin: 10px 0;
-      width: 100%;
-      font-size: 16px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-    }
-    button {
-      background: #5a67d8;
-      color: white;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #434190;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multi Calculator</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1 id="title">Normal Calculator</h1>
-    <div class="menu">
-      <button class="menu-btn" onclick="toggleMenu()">⋮</button>
-      <div class="dropdown" id="dropdown">
-        <a href="#" onclick="loadCalc('normal')">Normal Calculator</a>
-        <a href="#" onclick="loadCalc('bmi')">BMI Calculator</a>
-        <a href="#" onclick="loadCalc('emi')">EMI Calculator</a>
-        <a href="#" onclick="loadCalc('iq')">IQ Calculator</a>
-        <a href="#" onclick="loadCalc('height')">Height Calculator</a>
-        <a href="#" onclick="loadCalc('weight')">Weight Calculator</a>
-        <a href="privacy.html" target="_blank">Privacy Policy</a>
-      </div>
-    </div>
-  </header>
-
-  <div class="ad-banner">
-    <!-- Adsterra Script: Replace key and src with actual values -->
+  <!-- 🔼 Adsterra Top Banner -->
+  <div style="width: 100%; display: flex; justify-content: center; margin: 10px 0;">
     <script type="text/javascript">
       atOptions = {
-        'key' : 'YOUR_ADSTERRA_KEY_HERE',
+        'key' : '176032f829d601a7ed3a5b18520f12cb',
         'format' : 'iframe',
         'height' : 50,
         'width' : 320,
         'params' : {}
       };
-      document.write('<scr' + 'ipt type="text/javascript" src="https://www.profitabledisplaynetwork.com/YOUR_ADSTERRA_KEY_HERE/invoke.js"></scr' + 'ipt>');
     </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/176032f829d601a7ed3a5b18520f12cb/invoke.js"></script>
   </div>
 
-  <div class="content" id="calculator-content">
-    <div id="normal">
-      <input type="number" id="num1" placeholder="Enter number 1">
-      <input type="number" id="num2" placeholder="Enter number 2">
-      <button onclick="calculate('+')">Add</button>
-      <button onclick="calculate('-')">Subtract</button>
-      <button onclick="calculate('*')">Multiply</button>
-      <button onclick="calculate('/')">Divide</button>
-      <h3 id="result">Result: </h3>
-    </div>
+  <div class="app">
+    <header>
+      <h1>Multi Calculator</h1>
+      <div class="menu">
+        <button onclick="toggleMenu()">⋮</button>
+        <ul id="menuList" class="hidden">
+          <li onclick="showCalc('bmi')">BMI Calculator</li>
+          <li onclick="showCalc('emi')">EMI Calculator</li>
+          <li onclick="showCalc('iq')">IQ Calculator</li>
+          <li onclick="showCalc('normal')">Normal Calculator</li>
+          <li onclick="showCalc('height')">Height Calculator</li>
+          <li onclick="showCalc('weight')">Weight Calculator</li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main id="calculatorContainer">
+      <p>Select a calculator from the menu.</p>
+    </main>
   </div>
 
-  <script>
-    function toggleMenu() {
-      const dropdown = document.getElementById('dropdown');
-      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-    }
-
-    function loadCalc(type) {
-      document.getElementById('title').innerText = type.charAt(0).toUpperCase() + type.slice(1) + ' Calculator';
-      const content = document.getElementById('calculator-content');
-
-      switch(type) {
-        case 'normal':
-          content.innerHTML = document.getElementById('normal').outerHTML;
-          break;
-        case 'bmi':
-          content.innerHTML = `
-            <input type="number" id="height" placeholder="Height in cm">
-            <input type="number" id="weight" placeholder="Weight in kg">
-            <button onclick="calcBMI()">Calculate BMI</button>
-            <h3 id="bmiResult"></h3>
-          `;
-          break;
-        case 'emi':
-          content.innerHTML = `
-            <input type="number" id="loan" placeholder="Loan Amount">
-            <input type="number" id="interest" placeholder="Annual Interest (%)">
-            <input type="number" id="months" placeholder="Loan Tenure (months)">
-            <button onclick="calcEMI()">Calculate EMI</button>
-            <h3 id="emiResult"></h3>
-          `;
-          break;
-        case 'iq':
-          content.innerHTML = `
-            <input type="number" id="mentalAge" placeholder="Mental Age">
-            <input type="number" id="actualAge" placeholder="Actual Age">
-            <button onclick="calcIQ()">Calculate IQ</button>
-            <h3 id="iqResult"></h3>
-          `;
-          break;
-        case 'height':
-          content.innerHTML = `
-            <input type="number" id="feet" placeholder="Height in feet">
-            <input type="number" id="inches" placeholder="+ inches">
-            <button onclick="convertToCm()">Convert to cm</button>
-            <h3 id="heightResult"></h3>
-          `;
-          break;
-        case 'weight':
-          content.innerHTML = `
-            <input type="number" id="pounds" placeholder="Weight in pounds">
-            <button onclick="convertToKg()">Convert to kg</button>
-            <h3 id="weightResult"></h3>
-          `;
-          break;
-      }
-      toggleMenu();
-    }
-
-    function calculate(op) {
-      const num1 = parseFloat(document.getElementById('num1').value);
-      const num2 = parseFloat(document.getElementById('num2').value);
-      let result;
-      switch(op) {
-        case '+': result = num1 + num2; break;
-        case '-': result = num1 - num2; break;
-        case '*': result = num1 * num2; break;
-        case '/': result = num2 !== 0 ? num1 / num2 : 'Infinity'; break;
-      }
-      document.getElementById('result').innerText = 'Result: ' + result;
-    }
-
-    function calcBMI() {
-      const h = parseFloat(document.getElementById('height').value) / 100;
-      const w = parseFloat(document.getElementById('weight').value);
-      const bmi = w / (h * h);
-      document.getElementById('bmiResult').innerText = 'BMI: ' + bmi.toFixed(2);
-    }
-
-    function calcEMI() {
-      const p = parseFloat(document.getElementById('loan').value);
-      const r = parseFloat(document.getElementById('interest').value) / 1200;
-      const n = parseInt(document.getElementById('months').value);
-      const emi = p * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
-      document.getElementById('emiResult').innerText = 'EMI: ₹' + emi.toFixed(2);
-    }
-
-    function calcIQ() {
-      const mental = parseFloat(document.getElementById('mentalAge').value);
-      const actual = parseFloat(document.getElementById('actualAge').value);
-      const iq = (mental / actual) * 100;
-      document.getElementById('iqResult').innerText = 'IQ: ' + Math.round(iq);
-    }
-
-    function convertToCm() {
-      const ft = parseFloat(document.getElementById('feet').value);
-      const inch = parseFloat(document.getElementById('inches').value);
-      const cm = ((ft * 12) + inch) * 2.54;
-      document.getElementById('heightResult').innerText = 'Height in cm: ' + cm.toFixed(2);
-    }
-
-    function convertToKg() {
-      const lbs = parseFloat(document.getElementById('pounds').value);
-      const kg = lbs * 0.453592;
-      document.getElementById('weightResult').innerText = 'Weight in kg: ' + kg.toFixed(2);
-    }
-
-    // Prevent offline use
-    if (!navigator.onLine) {
-      document.body.innerHTML = '<div style="padding:20px; text-align:center; font-size:18px;">Internet connection required to use this app.</div>';
-    }
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
