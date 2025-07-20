@@ -1,39 +1,48 @@
-
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
-  color: #333;
-}
-.app {
-  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f1f5f9;
+  color: #111;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background: #3b82f6;
+  color: white;
+  padding: 1rem;
+  text-align: center;
 }
-.menu button {
-  font-size: 24px;
-  background: none;
-  border: none;
-  cursor: pointer;
+.menu {
+  margin-top: 10px;
 }
-.menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  position: absolute;
+select {
+  padding: 0.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
 }
-.menu ul.hidden {
-  display: none;
+main {
+  flex: 1;
+  padding: 1rem;
 }
-.menu li {
+footer {
+  background: #e2e8f0;
   padding: 10px;
-  cursor: pointer;
+  text-align: center;
 }
-.menu li:hover {
-  background-color: #eee;
+.ad-banner {
+  text-align: center;
+  margin-top: 10px;
+}
+input, button {
+  padding: 10px;
+  margin: 5px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+button {
+  background: #3b82f6;
+  color: white;
+  border: none;
 }
