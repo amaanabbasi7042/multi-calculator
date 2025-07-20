@@ -1,48 +1,47 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Multi Calculator</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- 🔼 Adsterra Top Banner -->
-  <div style="width: 100%; display: flex; justify-content: center; margin: 10px 0;">
+  <header>
+    <h1>Multi Calculator</h1>
+    <div class="menu">
+      <select id="calculatorSelect">
+        <option value="normal">Normal Calculator</option>
+        <option value="bmi">BMI Calculator</option>
+        <option value="emi">EMI Calculator</option>
+        <option value="iq">IQ Calculator</option>
+        <option value="height">Height Calculator</option>
+        <option value="weight">Weight Calculator</option>
+      </select>
+    </div>
+  </header>
+
+  <main id="calculatorContainer">
+    <!-- Calculators will load here -->
+  </main>
+
+  <!-- 🔸Adsterra Iframe Banner Ad (bottom) -->
+  <div class="ad-banner">
     <script type="text/javascript">
       atOptions = {
-        'key' : '176032f829d601a7ed3a5b18520f12cb',
-        'format' : 'iframe',
-        'height' : 50,
-        'width' : 320,
-        'params' : {}
+        'key': '176032f829d601a7ed3a5b18520f12cb',
+        'format': 'iframe',
+        'height': 50,
+        'width': 320,
+        'params': {}
       };
     </script>
     <script type="text/javascript" src="//www.highperformanceformat.com/176032f829d601a7ed3a5b18520f12cb/invoke.js"></script>
   </div>
 
-  <div class="app">
-    <header>
-      <h1>Multi Calculator</h1>
-      <div class="menu">
-        <button onclick="toggleMenu()">⋮</button>
-        <ul id="menuList" class="hidden">
-          <li onclick="showCalc('bmi')">BMI Calculator</li>
-          <li onclick="showCalc('emi')">EMI Calculator</li>
-          <li onclick="showCalc('iq')">IQ Calculator</li>
-          <li onclick="showCalc('normal')">Normal Calculator</li>
-          <li onclick="showCalc('height')">Height Calculator</li>
-          <li onclick="showCalc('weight')">Weight Calculator</li>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-        </ul>
-      </div>
-    </header>
-
-    <main id="calculatorContainer">
-      <p>Select a calculator from the menu.</p>
-    </main>
-  </div>
+  <footer>
+    <a href="privacy.html">Privacy Policy</a>
+  </footer>
 
   <script src="app.js"></script>
 </body>
